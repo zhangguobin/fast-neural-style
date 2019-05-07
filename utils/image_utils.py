@@ -41,14 +41,14 @@ def preprocess_image(images):
 
 def deprocess_image(images, rescale=False):
     """Undo preprocessing on an image and convert back to uint8."""
-    images = images  + VGG_MEAN_BGR[None, None]
+    images = images  + VGG_MEAN_BGR[None,None,None]
     if rescale:
         vmin, vmax = images.min(), images.max()
         images = (images - vmin) / (vmax - vmin)
         images = np.clip(255 * images, 0.0, 255.0).astype(np.uint8)
     else:
         images = np.clip(images, 0.0, 255.0).astype(np.uint8)
-    return np.flip(images, 2)
+    return np.flip(images, 3)
 
 def image_from_url(url):
     """
