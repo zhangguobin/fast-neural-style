@@ -9,3 +9,10 @@ This reproduces work by the paper ["Perceptual Losses for Real-Time Style Transf
 4. Then implement the tensorflow version of [fast style transfer](https://github.com/jcjohnson/fast-neural-style)
 5. Got stuck in tunning for weeks due to bad setup of style layers {relu1_2, relu2_2, relu3_3, relu4_3}. Thanks to [OlavHN] (https://github.com/OlavHN/fast-neural-style), [lengstrom](https://github.com/lengstrom/fast-style-transfer) and [hwalsuklee](https://github.com/hwalsuklee/tensorflow-fast-style-transfer), reasonable outputs are generated finally.
 6. Refactor IPython version to python scripts
+
+## Example
+<div align='center'>
+  <img src='datasets/styles/the_scream.jpg' height="225px">
+  <img src='datasets/examples/tubingen.jpg' height="225px">
+  <img src='tubingen_scream.jpg' height="346px">
+</div>
