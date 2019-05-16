@@ -39,6 +39,12 @@ def preprocess_image(images):
     images = tf.cast(images, tf.float32) - VGG_MEAN_BGR[None,None,None]
     return images
 
+# make all samples in dataset the same size
+def preprocess_dataset(x, target_size=256):
+    image_resized = tf.image.resize_images(x['image'], [target_size, target_size])
+    image_centered = preprocess_image(image_resized[None])
+    return image_centered[0]
+
 def deprocess_image(images, rescale=False):
     """Undo preprocessing on an image and convert back to uint8."""
     images = images  + VGG_MEAN_BGR[None,None,None]
