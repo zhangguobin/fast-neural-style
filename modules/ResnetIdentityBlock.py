@@ -4,7 +4,7 @@ from modules.InstanceNormalization import InstanceNormalization
 import tensorflow as tf
 
 class ResnetIdentityBlock(tf.keras.Model):
-    def __init__(self, kernel_size, filters, instanceNorm=False, regularizer=None):
+    def __init__(self, kernel_size, filters, instanceNorm=True, regularizer=None):
         super(ResnetIdentityBlock, self).__init__()
         filters1, filters2 = filters
         self.instanceNorm = instanceNorm
@@ -35,16 +35,16 @@ class ResnetIdentityBlock(tf.keras.Model):
     def call(self, input_tensor, training=False):
         x = self.conv2a(input_tensor)
         if self.instanceNorm is False:
-            self.norm2a(x, training=training)
+            x = self.norm2a(x, training=training)
         else:
-            self.norm2a(x)
+            x = self.norm2a(x)
         x = self.relu2a(x)
 
         x = self.conv2b(x)
         if self.instanceNorm is False:
-            self.norm2b(x, training=training)
+            x = self.norm2b(x, training=training)
         else:
-            self.norm2b(x)
+            x = self.norm2b(x)
 
         # center crop due to no padding in Conv2D
         input_cropped = self.crop2d(input_tensor)

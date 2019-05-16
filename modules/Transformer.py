@@ -120,11 +120,11 @@ class Transformer(tf.keras.Model):
             x = self.conv3_norm(x)
         x = self.conv3_relu(x)
         
-        x = self.resnet1(x)
-        x = self.resnet2(x)
-        x = self.resnet3(x)
-        x = self.resnet4(x)
-        x = self.resnet5(x)
+        x = self.resnet1(x, training=training)
+        x = self.resnet2(x, training=training)
+        x = self.resnet3(x, training=training)
+        x = self.resnet4(x, training=training)
+        x = self.resnet5(x, training=training)
         
         x = self.conv9(x)
         if self.instanceNorm is False:

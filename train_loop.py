@@ -4,9 +4,9 @@ from modules.grad import grad
 
 def train_loop(coco_train, sample_size, xformer, vgg_ext, lr, content_weights, style_weights,
           tv_weight, style_feats, style_grams, style_name):
-    filename = (style_name + 'lr' + str(lr) + 'c' + str(content_weights[0]) +
+    logdir = (style_name + 'lr' + str(lr) + 'c' + str(content_weights[0]) +
                 's' + str(style_weights[0]) + 'tv' + str(tv_weight))
-    print(filename)
+    print(logdir)
     
     global_step = tf.train.get_or_create_global_step()
     global_step.assign(0)
@@ -15,6 +15,9 @@ def train_loop(coco_train, sample_size, xformer, vgg_ext, lr, content_weights, s
     
     dataset = coco_train.repeat(2).map(preprocess_dataset).batch(4).prefetch(tf.data.experimental.AUTOTUNE)
     iterator = dataset.make_one_shot_iterator()
+
+    writer = tf.contrib.summary.create_file_writer(logdir)
+    writer.set_as_default()
     
     while True:
         try:
@@ -36,7 +39,7 @@ def train_loop(coco_train, sample_size, xformer, vgg_ext, lr, content_weights, s
                     tf.contrib.summary.histogram('grads'+str(i), grads[i])
                     tf.contrib.summary.histogram('weights'+str(i), xformer.trainable_variables[i])
             if global_step.numpy() % 1000 == 0:
-                model.save_weights(logdir + '/training_checkpoint')
+                xformer.save_weights(logdir+'/ckp')
         except tf.errors.OutOfRangeError:
-            model.save_weights(logdir + '/training_checkpoint')
+            xformer.save_weights(logdir+'/ckp')
             break
