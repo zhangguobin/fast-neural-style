@@ -16,5 +16,5 @@ Reproduce the work by this paper ["Perceptual Losses for Real-Time Style Transfe
 <div align='center'>
   <img src='examples/styles/the_scream.jpg' height="225px">
   <img src='examples/contents/tubingen.jpg' height="225px">
-  <img src='examples/outputs/tubingen_scream.jpg' height="365px">
+  <img src='examples/outputs/tubingen_scream.jpg' height="360px">
 </div>
