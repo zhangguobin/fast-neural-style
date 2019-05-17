@@ -1,6 +1,6 @@
 # fast-neural-style
 
-This reproduces work by the paper ["Perceptual Losses for Real-Time Style Transfer and Super-Resolution" (Johnson et al., ECCV 2016)](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf).
+Reproduce the work by this paper ["Perceptual Losses for Real-Time Style Transfer and Super-Resolution" (Johnson et al., ECCV 2016)](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf).
 
 ## the steps to success:
 1. Understand and implement style transfer [assignment for cs231n](http://cs231n.github.io/assignments2017/assignment3/)
