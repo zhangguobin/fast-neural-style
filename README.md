@@ -18,3 +18,8 @@ Reproduce the work by this paper ["Perceptual Losses for Real-Time Style Transfe
   <img src='examples/contents/tubingen.jpg' height="225px">
   <img src='examples/outputs/tubingen_scream.jpg' height="362px">
 </div>
+<div align='center'>
+  <img src='examples/styles/candy.jpg' height="225px">
+  <img src='examples/contents/hoovertowernight.jpg' height="225px">
+  <img src='examples/outputs/hoovertowernight_candy.jpg' height="346px">
+</div>
